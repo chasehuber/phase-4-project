@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_many :replies
-    has_many :threads, through: :replies
+    has_many :posts, through: :replies
 
     # validates :user_name, :email, :password, presence: true
     # validates :user_name, :email, uniqueness: true
