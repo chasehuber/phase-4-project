@@ -1,6 +1,6 @@
 User.destroy_all
 Reply.destroy_all
-Thread.destroy_all
+Post.destroy_all
 
 puts "Creating users"
 user1 = User.create(user_name: "mike123", first_name: "Mike", last_name: "Plisco", email: "mike123@mike.com", password: "mike123", image: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80", bio: "This is a bio about User 1")
