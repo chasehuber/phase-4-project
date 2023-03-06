@@ -56,3 +56,5 @@ Chat app (working title) allows users to create an account, customize their prof
 * React
 * JavaScript
 * TailwindCSS
+* Active Model Serializer
+* Hirb
