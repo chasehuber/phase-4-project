@@ -1,0 +1,2 @@
+class CreatorPostsController < ApplicationController
+end

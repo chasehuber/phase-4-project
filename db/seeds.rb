@@ -17,11 +17,14 @@ user5 = User.create(user_name: "alex123", first_name: "Alex", last_name: "Smith"
 
 
 20.times do
-    Post.create(title: Faker::Hobby.activity, body: Faker::Lorem.question, tags: Faker::ProgrammingLanguage.name, creator_id: User.all.sample.id)
+    user_id = User.all.sample.id
+    post = Post.create(title: Faker::Creature::Dog.meme_phrase, body: Faker::Lorem.question, breed: Faker::Creature::Dog.breed, creator_id: user_id)
+    CreatorPost.create(user_id: user_id, post_id: post.id)
 end
 
 40.times do
     Reply.create(content: Faker::Lorem.paragraphs, user_id: User.all.sample.id, post_id: Post.all.sample.id)
 end
+
 
 puts "✅ Done seeding!"

@@ -1,13 +1,13 @@
 class RepliesController < ApplicationController
 
-    def index
-        replies = Reply.all
-        render json: replies, status: :ok
-    end
-
     def show
         reply = find_reply
         render json: reply, status: :ok
+    end
+
+    def show_all
+        post = Post.find_by!(id: params[:post_id])
+        render json: post.replies, status: :ok
     end
 
     def create
