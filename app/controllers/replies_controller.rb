@@ -28,7 +28,7 @@ class RepliesController < ApplicationController
     end
 
     def reply_params
-        params.permit(:content, :user_id, :post_id)
+        params.permit(:content, :user_id, :post_id).with_defaults(user_id: session[:user_id])
     end
 
 end
