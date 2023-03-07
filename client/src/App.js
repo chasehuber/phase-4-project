@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { Routes , Route , useNavigate } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,6 +13,11 @@ function App() {
   return (
     <div className="App">
       <h1>Page Count: {count}</h1>
+      <Routes>
+        <Route path="/home" element=""/>
+        <Route path="/posts" element=""/>
+        <Route path="/users" element=""/>
+      </Routes>
     </div>
   );
 }
