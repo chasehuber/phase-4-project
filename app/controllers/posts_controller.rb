@@ -10,10 +10,11 @@ class PostsController < ApplicationController
         render json: post, status: :ok
     end
 
-
     def create
         post = Post.create!(post_params)
-        render json: post, status: :created
+        creator_post = CreatorPost.create!(creator_post_params(post))
+        # render json: post, status: :created
+        render json: creator_post, status: :created
     end
 
     def destroy
@@ -30,6 +31,10 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.permit(:title, :body, :breed, :creator_id)
+        params.permit(:title, :body, :breed, :creator_id).with_defaults(creator_id: session[:user_id])
+    end
+
+    def creator_post_params(post)
+        params.permit(:user_id, :post_id).with_defaults(user_id: session[:user_id], post_id: post.id)
     end
 end

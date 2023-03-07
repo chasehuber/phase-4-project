@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_secure_password
+
     has_many :replies
     has_many :posts, through: :replies
     has_many :creator_posts

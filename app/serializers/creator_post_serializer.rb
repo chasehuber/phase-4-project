@@ -1,6 +1,4 @@
 class CreatorPostSerializer < ActiveModel::Serializer
-  attributes :id, :user_name, :password, :email, :bio, :first_name, :last_name
-
-
-  has_many :posts, through: :creator_posts
+  attributes :id, :user_id, :post_id
+  
 end

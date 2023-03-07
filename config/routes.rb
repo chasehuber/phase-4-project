@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   post '/posts/:post_id/replies', to: 'replies#create'
   delete '/posts/:post_id/replies/:id', to: 'replies#destroy'
 
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
 end
