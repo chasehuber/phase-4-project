@@ -6,6 +6,7 @@ import PostContainer from "./components/PostContainer";
 import NewPostForm from "./components/NewPostForm";
 import UserProfile from "./components/UserProfile";
 import PostDetails from "./components/PostDetails";
+import SignUpPage from "./components/SignUpPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -98,6 +99,9 @@ function App() {
           />
         </Route>
         <Route path="/replies">
+        </Route>
+        <Route path="/users">
+          <SignUpPage/>
         </Route>
       </Switch>
     </div>
