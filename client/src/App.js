@@ -47,6 +47,9 @@ function App() {
     setPosts([...posts, newPost])
   }
 
+  function handleUserLogin(user) {
+    setCurrentUser(user)
+  }
 
   function handleNewReply(newReply) {
     setReplies([...replies, newReply])
@@ -62,10 +65,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
+      <Header currentUser={currentUser}/>
       <Switch>
         <Route path="/login">
-          <LoginPage />
+          <LoginPage handleUserLogin={handleUserLogin}/>
         </Route>
         <Route exact path="/home">
           <h1>Page Count: {count}</h1>
