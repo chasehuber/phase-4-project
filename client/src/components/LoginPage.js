@@ -7,6 +7,17 @@ function LoginPage() {
   function handleSubmit(e) {
     e.preventDefault();
 
+    fetch("/login", {
+      method: "POST",
+      mode:"cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ "user_name":username, "password":password })
+    })
+      .then(response => response.json())
+      .then(response => console.log(JSON.stringify(response)))
+
     setPassword('');
   }
 
