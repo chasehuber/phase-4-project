@@ -54,7 +54,7 @@ function App() {
         />
         </Route>
         <Route path="/newpost">
-          <NewPostForm handleNewPost={handleNewPost}/>
+          <NewPostForm handleNewPost={handleNewPost} currentUser={currentUser}/>
         </Route>
         <Route path="/profile">
           <UserProfile
