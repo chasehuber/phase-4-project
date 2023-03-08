@@ -9,9 +9,13 @@ import PostDetails from "./components/PostDetails";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [posts, setPosts] = useState('');
-  const [currentUser, setCurrentUser] = useState('');
+
   const [currentPost, setCurrentPost] = useState('');
+  const [posts, setPosts] = useState();
+  const [replies, setReplies] = useState()
+  const [currentUser, setCurrentUser] = useState('');
+  const [users, setUsers] = useState([]);
+
   
   useEffect(() => {
     fetch("/auth")
@@ -23,10 +27,19 @@ function App() {
     })
   },[])
 
+  useEffect(()=> {
+    fetch("users/")
+    .then(r => r.json())
+    .then(data => {
+      setUsers(data)
+    })
+  }, [])
+
   useEffect(() => {
      fetch("/posts")
      .then((r) => r.json())
      .then((data) => setPosts(data))
+     .then((data) => setReplies(data.replies))
   }, []);
 
    // helper function for adding new recipe
@@ -34,8 +47,19 @@ function App() {
     setPosts([...posts, newPost])
   }
 
-  console.log(currentPost)
+
+  function handleNewReply(newReply) {
+    setReplies([...replies, newReply])
+  }
+
   
+  //deactivate user from db
+  const onDeleteUser = (id) => {
+    const updatedUser = users.filter((currentUser) => currentUser.id !== id)
+    setCurrentUser(updatedUser)
+  }
+
+
   return (
     <div className="App">
       <Header/>
@@ -48,7 +72,7 @@ function App() {
         </Route>
         <Route path="/posts/:id">
           <PostDetails
-          posts={posts}
+          posts={posts} handleNewReply={handleNewReply}
           />
         </Route>
         <Route path="/posts">
@@ -59,12 +83,15 @@ function App() {
         />
         </Route>
         <Route path="/newpost">
-          <NewPostForm handleNewPost={handleNewPost}/>
+          <NewPostForm handleNewPost={handleNewPost} currentUser={currentUser}/>
         </Route>
         <Route path="/profile">
           <UserProfile
           currentUser={currentUser}
+          onDeleteUser={onDeleteUser}
           />
+        </Route>
+        <Route path="/replies">
         </Route>
       </Switch>
     </div>
