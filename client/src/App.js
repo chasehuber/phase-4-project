@@ -9,12 +9,24 @@ import UserProfile from "./components/UserProfile";
 function App() {
   const [count, setCount] = useState(0);
   const [posts, setPosts] = useState();
+  const [currentUser, setCurrentUser] = useState('');
 
   useEffect(() => {
     fetch("/posts")
     .then((r) => r.json())
     .then((data) => setPosts(data))
   }, []);
+
+  //fetch user data from db
+  useEffect(() => {
+    fetch("/auth")
+    .then(res => {
+      if(res.ok) {
+        res.json().then(user => setCurrentUser(user))
+      }
+      console.log(res)
+    })
+  },[])
 
   return (
     <div className="App">
@@ -35,7 +47,9 @@ function App() {
           <NewPostForm/>
         </Route>
         <Route path="/profile">
-          <UserProfile/>
+          <UserProfile
+          currentUser={currentUser}
+          />
         </Route>
       </Switch>
     </div>
