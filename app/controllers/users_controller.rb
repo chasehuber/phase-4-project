@@ -5,6 +5,11 @@ class UsersController < ApplicationController
         render json: users, status: :ok
     end
 
+    def find_current_user
+        current_user = User.find(session[:user_id])
+        render json: current_user, status: :ok
+    end
+
     def show
         user = find_user
         render json: user, serializer: ProfileSerializer, status: :ok

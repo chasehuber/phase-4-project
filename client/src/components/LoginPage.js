@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function LoginPage() {
+function LoginPage({ setCurrentUser }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -15,9 +15,11 @@ function LoginPage() {
       },
       body: JSON.stringify({ "user_name":username, "password":password })
     })
-      .then(response => response.json())
-      .then(response => console.log(JSON.stringify(response)))
-
+      .then(res => {
+        if(res.ok) {
+          res.json().then(user => setCurrentUser(user))
+        }
+      })
     setPassword('');
   }
 
