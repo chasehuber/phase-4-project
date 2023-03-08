@@ -10,6 +10,7 @@ import PostDetails from "./components/PostDetails";
 function App() {
   const [count, setCount] = useState(0);
   const [posts, setPosts] = useState();
+  const [replies, setReplies] = useState()
   const [currentUser, setCurrentUser] = useState('');
   const [users, setUsers] = useState([]);
   
@@ -35,18 +36,26 @@ function App() {
      fetch("/posts")
      .then((r) => r.json())
      .then((data) => setPosts(data))
+     .then((data) => setReplies(data.replies))
   }, []);
 
    // helper function for adding new recipe
   function handleNewPost(newPost) {
     setPosts([...posts, newPost])
   }
+
+
+  function handleNewReply(newReply) {
+    setReplies([...replies, newReply])
+  }
+
   
   //deactivate user from db
   const onDeleteUser = (id) => {
     const updatedUser = users.filter((currentUser) => currentUser.id !== id)
     setCurrentUser(updatedUser)
   }
+
 
   return (
     <div className="App">
@@ -60,7 +69,7 @@ function App() {
         </Route>
         <Route path="/posts/:id">
           <PostDetails
-          posts={posts}
+          posts={posts} handleNewReply={handleNewReply}
           />
         </Route>
         <Route path="/posts">
@@ -76,6 +85,8 @@ function App() {
           currentUser={currentUser}
           onDeleteUser={onDeleteUser}
           />
+        </Route>
+        <Route path="/replies">
         </Route>
       </Switch>
     </div>
