@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
-import { useNavigate } from "react-router-dom";
-import Header from './Header';
+// import { useNavigate } from "react-router-dom";
 
 import { Button, Form, TextArea , Container, Dropdown } from 'semantic-ui-react'
 
-function NewPostForm ({handleNewPost, currentUser}) {
+function NewPostForm ({handleNewPost}) {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [breed, setBreed] = useState('')
+
+// this will allow us to navigate back to the posts page or directly to the newly added post
+// const navigate = useNavigate();
 
 function handleSubmit(e) {
     e.preventDefault();
@@ -16,10 +18,11 @@ function handleSubmit(e) {
         title: title,
         body: body,
         breed: breed,
-        creator_id: currentUser.id
+        creator_id: "currentUser.id"
     }
 
-    //something wrong with this fetch request
+    console.log(newPost)
+
     fetch("/posts", {
         method: "POST",
         headers: {
@@ -29,13 +32,12 @@ function handleSubmit(e) {
     })
     .then(resp => resp.json())
     .then(newPost => handleNewPost(newPost));
-    navigate("/posts")
+    // navigate("/posts")
 }
     return (
 
         <>
         <Container>
-        <Header/>
         <h1>Add a New Post</h1>
         <h2>Get the conversation started by adding a new post below</h2>
         <div class="ui centered grid">
@@ -50,14 +52,14 @@ function handleSubmit(e) {
                     id='form-textarea-control-opinion'
                     control={TextArea}
                     label='Post Body'
-                    placeholder='Body' value={body} onChange={(e) => setSteps(e.target.value)} />
+                    placeholder='Body' value={body} onChange={(e) => setBody(e.target.value)} />
                     <Form.Field>
                         <label>Related Breed</label>
                         <Dropdown
                             placeholder='Select Breed'
-                            selection options={[{ key: 'easy', value: 'easy', text: 'easy' },{ key: 'moderate', value: 'moderate', text: 'moderate' },{ key: 'hard', value: 'hard', text: 'hard' },        ]}
+                            selection options={[{ key: 'Goldendoodle', value: 'Goldendoodle', text: 'Goldendoodle' },{ key: 'French Bulldog', value: 'French Bulldog', text: 'French Bulldog' },{ key: 'Havanese', value: 'Havanese', text: 'Havanese' }, { key: 'Mutt', value: 'Mutt', text: 'Mutt' }]}
                             value={breed}
-                            onChange={(e, data) => setDifficulty(data.value)}
+                            onChange={(e, data) => setBreed(data.value)}
                         />
                     </Form.Field>
                     <Button type='submit'>Submit</Button>
@@ -68,10 +70,6 @@ function handleSubmit(e) {
    </Container>
    </>
     )
-   
 }
 
-
-
-
-export default NewPostForm; 
+export default NewPostForm;

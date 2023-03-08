@@ -16,6 +16,12 @@ function App() {
     .then((data) => setPosts(data))
   }, []);
 
+
+   // helper function for adding new recipe
+  function handleNewPost(newPost) {
+    setPosts([...posts, newPost])
+}
+
   return (
     <div className="App">
       <Header/>
@@ -32,7 +38,7 @@ function App() {
           />
         </Route>
         <Route path="/newpost">
-          <NewPostForm/>
+          <NewPostForm handleNewPost={handleNewPost}/>
         </Route>
         <Route path="/profile">
           <UserProfile/>
