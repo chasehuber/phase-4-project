@@ -8,6 +8,13 @@ import UserProfile from "./components/UserProfile";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [posts, setPosts] = useState();
+
+  useEffect(() => {
+    fetch("/posts")
+    .then((r) => r.json())
+    .then((data) => setPosts(data))
+  }, []);
 
   return (
     <div className="App">
@@ -20,7 +27,9 @@ function App() {
           <h1>Page Count: {count}</h1>
         </Route>
         <Route path="/posts">
-          <PostContainer/>
+          <PostContainer
+            posts={posts}
+          />
         </Route>
         <Route path="/newpost">
           <NewPostForm/>
