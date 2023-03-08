@@ -1,6 +1,6 @@
 # Chat app
 
-Chat app (working title) allows users to create an account, customize their profile, and create/reply to community threads.
+PupHub allows users to create an account, customize their profile, and create/reply to community threads about dogs.
 
 # Chat app home page wireframe
 
