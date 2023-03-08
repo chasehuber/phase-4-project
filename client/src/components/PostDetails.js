@@ -1,4 +1,4 @@
-function PostDetails({posts}) {
+function PostDetails({}) {
 
 
 

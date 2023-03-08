@@ -1,7 +1,7 @@
-function ReplyCard() {
+function ReplyCard({reply}) {
 
     return (
-        <h1>hi reply</h1>
+        <p>hi there</p>
     )
 }
 

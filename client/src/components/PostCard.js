@@ -1,10 +1,10 @@
 import React from "react";
 import ReplyCard from "./ReplyCard";
 
-function PostCard({post}) {
-    console.log("from postcard:", post)
+function PostCard({post, setCurrentPost}) {
+    // console.log("from postcard:", post)
     const {title, body, breed, creator_id, replies} = post
-    console.log("from postcard:", post.title)
+    // console.log("from postcard:", replies)
 
     const replyArray = replies.map((reply) => (
         <ReplyCard
@@ -13,11 +13,16 @@ function PostCard({post}) {
         />
     ))
 
+    const handleClick = (e) => {
+        console.log({...post, [e.target.name]: e.target.value })
+    }
+
     return (
-        <div>
-        <h1>{title}</h1>
-        <h2>{breed}</h2>
-        <p>{body}</p>
+        <div onClick={handleClick}>
+            <p>{title}</p>
+            <p>{breed}</p>
+            <p>{body}</p>
+            <div>{replyArray}</div>
         </div>
     )
 }
