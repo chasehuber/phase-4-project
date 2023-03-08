@@ -12,6 +12,7 @@ function App() {
   const [posts, setPosts] = useState();
   const [replies, setReplies] = useState()
   const [currentUser, setCurrentUser] = useState('');
+  const [users, setUsers] = useState([]);
   
   useEffect(() => {
     fetch("/auth")
@@ -22,6 +23,14 @@ function App() {
       console.log(res)
     })
   },[])
+
+  useEffect(()=> {
+    fetch("users/")
+    .then(r => r.json())
+    .then(data => {
+      setUsers(data)
+    })
+  }, [])
 
   useEffect(() => {
      fetch("/posts")
@@ -35,9 +44,19 @@ function App() {
     setPosts([...posts, newPost])
   }
 
+
   function handleNewReply(newReply) {
     setReplies([...replies, newReply])
   }
+
+  
+  //deactivate user from db
+  const onDeleteUser = (id) => {
+    const updatedUser = users.filter((currentUser) => currentUser.id !== id)
+    setCurrentUser(updatedUser)
+  }
+
+
   return (
     <div className="App">
       <Header/>
@@ -64,6 +83,7 @@ function App() {
         <Route path="/profile">
           <UserProfile
           currentUser={currentUser}
+          onDeleteUser={onDeleteUser}
           />
         </Route>
         <Route path="/replies">

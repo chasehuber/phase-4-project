@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 import {FaPencilAlt} from 'react-icons/fa'
-function UserProfile({currentUser}) {
+function UserProfile({currentUser, onDeleteUser}) {
 
+const {id} = currentUser
+const deleteAccount = () => {
+console.log(currentUser.id)
+    if (currentUser.id) {
+        fetch(`users/${currentUser.id}`,
+        { method: 'DELETE'})
+        .then(() => onDeleteUser(id))
+        alert("your account has been deactivated")
+    }
+}
     return (
         <div>
             <div>
@@ -28,6 +38,9 @@ function UserProfile({currentUser}) {
                     bio: {currentUser.bio} &nbsp;
                     <button> <FaPencilAlt></FaPencilAlt> </button>
                 </h3>
+            </div>
+            <div>
+                <button onClick={deleteAccount}> Deactivate </button>
             </div>
         </div>
     )
