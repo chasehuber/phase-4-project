@@ -14,10 +14,10 @@ function PostCard({post}) {
     ))
 
     return (
-        <div>
-        <h1>{title}</h1>
-        <h2>{breed}</h2>
-        <p>{body}</p>
+        <div className="basic-button">
+            <h1>{title}</h1>
+            <h2>{breed}</h2>
+            <p>{body}</p>
         </div>
     )
 }
