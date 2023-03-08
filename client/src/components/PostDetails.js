@@ -1,7 +1,7 @@
+
 import NewReplyForm from "./NewReplyForm"
 
 function PostDetails({handleNewReply , currentPost}) {
-
 
 
     return (

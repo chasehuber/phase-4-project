@@ -9,10 +9,13 @@ import PostDetails from "./components/PostDetails";
 
 function App() {
   const [count, setCount] = useState(0);
+
+  const [currentPost, setCurrentPost] = useState('');
   const [posts, setPosts] = useState();
   const [replies, setReplies] = useState()
   const [currentUser, setCurrentUser] = useState('');
   const [users, setUsers] = useState([]);
+
   
   useEffect(() => {
     fetch("/auth")
@@ -75,6 +78,8 @@ function App() {
         <Route path="/posts">
           <PostContainer
             posts={posts}
+            currentPost={currentPost}
+            setCurrentPost={setCurrentPost}
         />
         </Route>
         <Route path="/newpost">
