@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import PostContainer from "./components/PostContainer";
 import NewPostForm from "./components/NewPostForm";
 import UserProfile from "./components/UserProfile";
+import PostDetails from "./components/PostDetails";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -26,10 +27,15 @@ function App() {
         <Route exact path="/home">
           <h1>Page Count: {count}</h1>
         </Route>
+        <Route path="/posts/:id">
+          <PostDetails
+          posts={posts}
+          />
+        </Route>
         <Route path="/posts">
           <PostContainer
             posts={posts}
-          />
+        />
         </Route>
         <Route path="/newpost">
           <NewPostForm/>
