@@ -72,7 +72,10 @@ function App() {
         </Route>
         <Route path="/posts/:id">
           <PostDetails
-          posts={posts} handleNewReply={handleNewReply}
+            posts={posts} 
+            handleNewReply={handleNewReply} 
+            currentUser={currentUser} 
+            currentPost={currentPost}
           />
         </Route>
         <Route path="/posts">

@@ -6,6 +6,8 @@ import { Button, Form, TextArea , Container, Dropdown } from 'semantic-ui-react'
 function NewReplyForm ({handleNewReply, currentUser, currentPost}) {
     const [content, setContent] = useState('')
 
+    const { id } = currentPost
+
 // this will allow us to navigate back to the posts page or directly to the newly added post
 // const navigate = useNavigate();
 
@@ -15,16 +17,16 @@ function handleSubmit(e) {
     //**UPDATE Post_ID */
     const newReply = {
         content: content,
-        user_id: 3,
-        post_id: 7
+        user_id: currentUser.id,
+        post_id: id
     }
 
-    const { id } = currentPost
+    
 
     console.log(newReply)
 
     //UPDATE Post_ID */
-    fetch(`/posts/7/replies`, {
+    fetch(`/posts/${id}/replies`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
