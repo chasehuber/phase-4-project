@@ -27,7 +27,6 @@ function App() {
     })
   },[])
 
-  if(!currentUser) return <LoginPage setCurrentUser={setCurrentUser}/>
   return (
     <div className="App">
       <Header/>
