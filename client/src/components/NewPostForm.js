@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 
 import { Button, Form, TextArea , Container, Dropdown } from 'semantic-ui-react'
 
-function NewPostForm ({handleNewPost}) {
+function NewPostForm ({handleNewPost, currentUser}) {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [breed, setBreed] = useState('')
@@ -18,7 +18,7 @@ function handleSubmit(e) {
         title: title,
         body: body,
         breed: breed,
-        creator_id: "currentUser.id"
+        creator_id: currentUser.id
     }
 
     console.log(newPost)
