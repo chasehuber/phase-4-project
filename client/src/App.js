@@ -40,7 +40,7 @@ function App() {
      .then((r) => r.json())
      .then((data) => setPosts(data))
      .then((data) => setReplies(data.replies))
-  }, []);
+  }, [replies]);
 
    // helper function for adding new recipe
   function handleNewPost(newPost) {

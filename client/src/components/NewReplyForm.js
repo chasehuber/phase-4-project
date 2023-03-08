@@ -21,9 +21,6 @@ function handleSubmit(e) {
         post_id: id
     }
 
-    
-
-    console.log(newReply)
 
     //UPDATE Post_ID */
     fetch(`/posts/${id}/replies`, {

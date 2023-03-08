@@ -1,7 +1,11 @@
 function ReplyCard({reply}) {
 
+    const {user_id, content} = reply
     return (
-        <p>hi there</p>
+        <>
+        <p>{user_id}</p>
+        <p>{content}</p>
+        </>
     )
 }
 
