@@ -23,7 +23,7 @@ user5 = User.create(user_name: "alex123", first_name: "Alex", last_name: "Smith"
 end
 
 40.times do
-    Reply.create(content: Faker::Lorem.paragraphs, user_id: User.all.sample.id, post_id: Post.all.sample.id)
+    Reply.create(content: Faker::Lorem.paragraph, user_id: User.all.sample.id, post_id: Post.all.sample.id)
 end
 
 
