@@ -14,7 +14,7 @@ function PostCard({post, setCurrentPost}) {
     ))
 
     const handleClick = (e) => {
-        console.log({...post, [e.target.name]: e.target.value })
+        setCurrentPost({...post, [e.target.name]: e.target.value })
     }
 
     return (
