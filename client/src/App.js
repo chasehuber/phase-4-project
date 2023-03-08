@@ -11,13 +11,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [posts, setPosts] = useState();
   const [currentUser, setCurrentUser] = useState('');
-
-  useEffect(() => {
-     fetch("/posts")
-     .then((r) => r.json())
-     .then((data) => setPosts(data))
-  }, []);
-
+  
   useEffect(() => {
     fetch("/auth")
     .then(res => {
@@ -28,6 +22,17 @@ function App() {
     })
   },[])
 
+  useEffect(() => {
+     fetch("/posts")
+     .then((r) => r.json())
+     .then((data) => setPosts(data))
+  }, []);
+
+   // helper function for adding new recipe
+  function handleNewPost(newPost) {
+    setPosts([...posts, newPost])
+  }
+  
   return (
     <div className="App">
       <Header/>
@@ -49,7 +54,7 @@ function App() {
         />
         </Route>
         <Route path="/newpost">
-          <NewPostForm/>
+          <NewPostForm handleNewPost={handleNewPost}/>
         </Route>
         <Route path="/profile">
           <UserProfile
