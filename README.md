@@ -1,8 +1,8 @@
-# Chat app
+# Dog Forum Application
 
-PupHub allows users to create an account, customize their profile, and create/reply to community threads about dogs.
+A forum commuminity for all breeds of dog owners and dog lovers. PupHub allows users to create an account, customize their profile, and create and reply to community discussions about anything related to dogs.
 
-# Chat app home page wireframe
+# PupHub homepage wireframe
 
 <img src="./assets/wireframe.png">
 
