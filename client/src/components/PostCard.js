@@ -6,7 +6,8 @@ function PostCard({post, setCurrentPost}) {
     const {title, body, breed, creator_id, replies} = post
     // console.log("from postcard:", replies)
 
-
+    let reply_count = post.replies.map ((reply) => reply)
+    const reply_count_total = reply_count.length
 
     const handleClick = (e) => {
         setCurrentPost({...post, [e.target.name]: e.target.value })
@@ -18,6 +19,7 @@ function PostCard({post, setCurrentPost}) {
             <p>{title}</p>
             <p>{breed}</p>
             <p>{body}</p>
+            <p>Replies: {reply_count_total}</p>
         </div>
     )
 }
