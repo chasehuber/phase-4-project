@@ -1,3 +1,12 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
+
+.basic-button {
+  @apply border-2 border-black border-solid p-1 m-2 hover:bg-gray-300 max-w-max
+}
+
+.basic-box {
+  @apply border-2 border-black border-solid p-1 m-2 max-w-max
+}
+

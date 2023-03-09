@@ -8,12 +8,13 @@ function PostCard({post, setCurrentPost}) {
 
 
 
-    const handlePostClick = (e) => {
+    const handleClick = (e) => {
         setCurrentPost({...post, [e.target.name]: e.target.value })
     }
 
     return (
-        <div onClick={handlePostClick}>
+
+        <div onClick={handleClick} className="basic-button">
             <p>{title}</p>
             <p>{breed}</p>
             <p>{body}</p>

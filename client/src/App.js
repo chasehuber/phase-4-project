@@ -6,6 +6,7 @@ import PostContainer from "./components/PostContainer";
 import NewPostForm from "./components/NewPostForm";
 import UserProfile from "./components/UserProfile";
 import PostDetails from "./components/PostDetails";
+import SignUpPage from "./components/SignUpPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -50,6 +51,9 @@ function App() {
     setPosts([...posts, newPost])
   }
 
+  function handleUserLogin(user) {
+    setCurrentUser(user)
+  }
 
   // function handleNewReply(newReply) {
   //   setReplies([...replies, newReply])
@@ -64,10 +68,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
+      <Header currentUser={currentUser}/>
       <Switch>
         <Route path="/login">
-          <LoginPage />
+          <LoginPage handleUserLogin={handleUserLogin}/>
         </Route>
         <Route exact path="/home">
           <h1>Page Count: {count}</h1>
@@ -100,6 +104,9 @@ function App() {
           />
         </Route>
         <Route path="/replies">
+        </Route>
+        <Route path="/users">
+          <SignUpPage/>
         </Route>
       </Switch>
     </div>

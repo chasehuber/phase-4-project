@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { Redirect, Route } from "react-router-dom";
 
-function LoginPage({ setCurrentUser }) {
+function LoginPage({ handleUserLogin, currentUser }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -17,7 +18,7 @@ function LoginPage({ setCurrentUser }) {
     })
       .then(res => {
         if(res.ok) {
-          res.json().then(user => setCurrentUser(user))
+          res.json().then(user => handleUserLogin(user))
         }
       })
     setPassword('');
@@ -25,18 +26,18 @@ function LoginPage({ setCurrentUser }) {
 
   return (
     <form>
-      <div id="username-field">
+      <div id="username-field" className="basic-box">
         <label>Username: </label>
-        <input type="text" name="username" value={username}
+        <input type="text" name="username" className="basic-box" value={username}
           onChange={ (e) => setUsername(e.target.value) }/>
       </div>
-      <div id="password-field">
+      <div id="password-field" className="basic-box">
         <label>Password: </label>
-        <input type="password" name="password" value={password}
+        <input type="password" name="password" className="basic-box" value={password}
           onChange={ (e) => setPassword(e.target.value) }/>
       </div>
       <div>
-        <input type="submit" onClick={handleSubmit}/>
+        <input type="submit" className="basic-button" onClick={handleSubmit}/>
       </div>
     </form>
   )
