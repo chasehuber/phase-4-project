@@ -41,7 +41,7 @@ function NewReplyForm ({replies, handleNewReply, currentUser, currentPost, setRe
             .then(data => (setReplies(data)))
             .then(() =>setContent(initialContent))
         } else {
-            alert('You must be logged in to do that.')
+            res.json().then((errorData)=> alert(errorData.errors))
         }
     })}
         catch (error){

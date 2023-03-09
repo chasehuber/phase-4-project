@@ -23,9 +23,7 @@ function LoginPage({ handleUserLogin, currentUser }) {
           .then(()=> history.push('/posts'))
           .then(() => window.location.reload());
         } else {
-          // res.json().then(json => setErrors(Object.entries(json.errors)))
-          // res.json().then((errorData)=> setErrors(errorData.errors))
-          alert("Incorrect username or password!")
+          res.json().then((errorData)=> alert(errorData.error))
         }
       })
     setPassword('');
