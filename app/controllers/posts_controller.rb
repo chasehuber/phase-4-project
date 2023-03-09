@@ -41,6 +41,6 @@ class PostsController < ApplicationController
     end
 
     def render_unprocessable_entity_response(error)
-        render json: { errors: "Please select a breed" }, status: :unprocessable_entity
+        render json: { errors: "Please fill out all required fields" }, status: :unprocessable_entity
     end
 end
