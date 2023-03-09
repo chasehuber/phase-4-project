@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 
 import { Button, Form, TextArea , Container, Dropdown } from 'semantic-ui-react'
 
-function NewPostForm ({handleNewPost, currentUser}) {
+function NewPostForm ({handleNewPost, currentUser, setPosts}) {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [breed, setBreed] = useState('')
@@ -31,7 +31,11 @@ function handleSubmit(e) {
         body: JSON.stringify(newPost),
     })
     .then(resp => resp.json())
-    .then(newPost => handleNewPost(newPost));
+    .then(() => {
+        fetch("/posts")
+        .then((r) => r.json())
+        .then((data) => setPosts(data))
+    });
     // navigate("/posts")
 }
     return (
