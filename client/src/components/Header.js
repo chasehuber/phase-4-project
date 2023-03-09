@@ -1,10 +1,11 @@
 import React from "react";
 import { Menu } from "semantic-ui-react"
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 
 import toplogo from "./puphub.png"
 
 function Header({ currentUser }) {
+    const history = useHistory();
 
     function handleLogout() {
         fetch("/logout", {
@@ -14,6 +15,8 @@ function Header({ currentUser }) {
               "Content-Type": "application/json"
             }
         })
+        history.push('/login')
+        window.location.reload()
     }
 
     const login_option = <Menu.Item as={Link} to ="/login" className="basic-button">Login</Menu.Item>
