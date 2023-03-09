@@ -53,7 +53,8 @@ function handleSubmit(e) {
         
         history.push('/posts')
     } else {
-            alert("You must be logged in to do that.")
+        res.json().then((errorData)=> alert(errorData.errors))
+        // res.json().then((errorData)=> alert(errorData.error))
         }
     });
     // navigate("/posts")

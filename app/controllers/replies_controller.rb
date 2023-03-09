@@ -1,4 +1,5 @@
 class RepliesController < ApplicationController
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     def show
         reply = find_reply
@@ -29,6 +30,10 @@ class RepliesController < ApplicationController
 
     def reply_params
         params.permit(:content, :user_id, :post_id).with_defaults(user_id: session[:user_id])
+    end
+
+    def render_unprocessable_entity_response(error)
+        render json: { errors: "Please type your reply before submitting." }, status: :unprocessable_entity
     end
 
 end

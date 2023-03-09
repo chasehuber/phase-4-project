@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     skip_before_action :authorized, only: [:index, :show]
 
     def index
@@ -37,5 +38,9 @@ class PostsController < ApplicationController
 
     def creator_post_params(post)
         params.permit(:user_id, :post_id).with_defaults(user_id: session[:user_id], post_id: post.id)
+    end
+
+    def render_unprocessable_entity_response(error)
+        render json: { errors: "Please select a breed" }, status: :unprocessable_entity
     end
 end
