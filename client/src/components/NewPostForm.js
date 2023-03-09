@@ -70,7 +70,7 @@ function handleSubmit(e) {
                         <input type="text" required placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
                     </div>
                     <div className='basic-box'>
-                        <label>Body</label>
+                        <label>Body: </label>
                         <div className='basic-box'>
                             <textarea required rows="10" cols="100" value={body} onChange={(e) => setBody(e.target.value)} />
                         </div>
