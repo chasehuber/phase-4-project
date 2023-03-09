@@ -10,7 +10,7 @@ function PostContainer({posts, currentPost, setCurrentPost, changeSearch, search
 
 
     const postArray = posts.map((post) => (
-        <Link to ={`/posts/${post.id}`} >
+        <Link key={post.id} to ={`/posts/${post.id}`} >
             <PostCard
                 currentPost={currentPost}
                 setCurrentPost={setCurrentPost}
@@ -22,13 +22,13 @@ function PostContainer({posts, currentPost, setCurrentPost, changeSearch, search
 
     return (
         <>
-        <SearchPost
-            search={search}
-            changeSearch={changeSearch}
-        />
-        <div>
-        {postArray}
-        </div>
+            <SearchPost
+                search={search}
+                changeSearch={changeSearch}
+            />
+            <div>
+                {postArray}
+            </div>
         </>
     )
 }

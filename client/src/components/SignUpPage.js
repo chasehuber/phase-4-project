@@ -23,7 +23,8 @@ function SignUpPage() {
         })
         .then(res => {
             if(res.status === 201) {
-                history.push('/profile')
+                alert("Sign up successful, please log in")
+                history.push('/login')
             }
         })
     }

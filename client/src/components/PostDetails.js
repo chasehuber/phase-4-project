@@ -3,8 +3,6 @@ import NewReplyForm from "./NewReplyForm"
 import ReplyCard from "./ReplyCard";
 
 function PostDetails({posts, handleNewReply , currentPost, currentUser, setReplies, statereplies, setCurrentPost}) {
-    console.log("postdeets", currentPost)
-
     const {id, title, body, breed, creator_id, replies} = currentPost
 
     //Fetching So That currentPost Is Updated As New Replies Are Submitted

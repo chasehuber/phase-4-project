@@ -59,6 +59,7 @@ function handleSubmit(e) {
     });
     // navigate("/posts")
 }
+    if (!currentUser) {history.push("/posts")}
     return (
         <>
             <h1 className='basic-box'>Add a New Post</h1>
