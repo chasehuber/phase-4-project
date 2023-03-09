@@ -86,9 +86,19 @@ function UserProfile({currentUser, onDeleteUser, onEditUserProfile}) {
 
     const {id} = currentUser
 
-    const deleteAccount = () => {
-        if (currentUser.id) {
-            fetch(`users/${currentUser.id}`,
+    async function deleteAccount() {
+        let user_id = currentUser.id
+
+        await fetch("/logout", {
+            method: "DELETE",
+            mode:"cors",
+            headers: {
+              "Content-Type": "application/json"
+            }
+        })
+
+        if (user_id) {
+            fetch(`users/${user_id}`,
             { method: 'DELETE'})
             .then(() => onDeleteUser(id))
             alert("your account has been deactivated")

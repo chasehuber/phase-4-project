@@ -16,8 +16,8 @@ function PostCard({post, setCurrentPost}) {
     return (
 
         <div onClick={handleClick} className="basic-button">
-            <p>{title}</p>
-            <p>{breed}</p>
+            <p>Title: {title}</p>
+            <p>Category: {breed}</p>
             <p>{body}</p>
             <p>Replies: {reply_count_total}</p>
         </div>
