@@ -1,11 +1,18 @@
-
+import React, {useEffect} from "react";
 import NewReplyForm from "./NewReplyForm"
 import ReplyCard from "./ReplyCard";
 
-function PostDetails({handleNewReply , currentPost, currentUser}) {
+function PostDetails({posts, handleNewReply , currentPost, currentUser, setReplies, statereplies, setCurrentPost}) {
     console.log("postdeets", currentPost)
 
-    const {title, body, breed, creator_id, replies} = currentPost
+    const {id, title, body, breed, creator_id, replies} = currentPost
+
+    //Fetching So That currentPost Is Updated As New Replies Are Submitted
+    useEffect(() => {
+        fetch(`/posts/${id}`)
+        .then(r => r.json())
+        .then(data => setCurrentPost(data))
+    }, [posts])
 
     const replyArray = replies.map((reply) => (
         <ReplyCard
@@ -23,10 +30,13 @@ function PostDetails({handleNewReply , currentPost, currentUser}) {
             <p>{body}</p>
             <div>{replyArray}</div>
         </div>
-        <NewReplyForm 
-            handleNewReply={handleNewReply} 
+        <NewReplyForm
+            replies={statereplies} 
+            handleNewReply={handleNewReply}
+            setCurrentPost={setCurrentPost} 
             currentPost={currentPost}
             currentUser={currentUser}
+            setReplies={setReplies}
         />
         </>
     )

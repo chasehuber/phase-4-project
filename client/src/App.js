@@ -12,11 +12,12 @@ function App() {
   const [count, setCount] = useState(0);
 
   const [currentPost, setCurrentPost] = useState('');
-  const [posts, setPosts] = useState();
-  const [replies, setReplies] = useState()
+  const [posts, setPosts] = useState([]);
+  const [replies, setReplies] = useState([])
   const [currentUser, setCurrentUser] = useState('');
   const [users, setUsers] = useState([]);
 
+  console.log("replyme:", replies)
   
   useEffect(() => {
     fetch("/auth")
@@ -27,6 +28,8 @@ function App() {
       console.log(res)
     })
   },[])
+
+  console.log("me", currentUser)
 
   useEffect(()=> {
     fetch("users/")
@@ -40,7 +43,7 @@ function App() {
      fetch("/posts")
      .then((r) => r.json())
      .then((data) => setPosts(data))
-     .then((data) => setReplies(data.replies))
+    .then(console.log('fetched!'))
   }, [replies]);
 
    // helper function for adding new recipe
@@ -52,9 +55,9 @@ function App() {
     setCurrentUser(user)
   }
 
-  function handleNewReply(newReply) {
-    setReplies([...replies, newReply])
-  }
+  // function handleNewReply(newReply) {
+  //   setReplies([...replies, newReply])
+  // }
 
   
   //deactivate user from db
@@ -62,7 +65,6 @@ function App() {
     const updatedUser = users.filter((currentUser) => currentUser.id !== id)
     setCurrentUser(updatedUser)
   }
-
 
   return (
     <div className="App">
@@ -76,10 +78,13 @@ function App() {
         </Route>
         <Route path="/posts/:id">
           <PostDetails
+            statereplies={replies}
             posts={posts} 
-            handleNewReply={handleNewReply} 
+            // handleNewReply={handleNewReply} 
             currentUser={currentUser} 
             currentPost={currentPost}
+            setCurrentPost={setCurrentPost}
+            setReplies={setReplies}
           />
         </Route>
         <Route path="/posts">

@@ -13,6 +13,7 @@ function PostCard({post, setCurrentPost}) {
     }
 
     return (
+
         <div onClick={handleClick} className="basic-button">
             <p>{title}</p>
             <p>{breed}</p>
