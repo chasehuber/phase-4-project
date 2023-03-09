@@ -100,7 +100,7 @@ function App() {
         </Route>
         <Route path="/replies">
         </Route>
-        <Route path="/users">
+        <Route path="/signup">
           <SignUpPage/>
         </Route>
       </Switch>

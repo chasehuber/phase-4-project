@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Redirect, Route, useHistory } from "react-router-dom";
 
 function SignUpPage() {
     const [username, setUsername] = useState('');
@@ -7,8 +8,10 @@ function SignUpPage() {
     const [last_name, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [bio, setBio] = useState('');
+    const history = useHistory();
 
-    function handleSignUp() {
+    function handleSignUp(e) {
+        e.preventDefault();
         fetch("/users", {
             method: "POST",
             mode: "cors",
@@ -19,8 +22,8 @@ function SignUpPage() {
             "email": email, "password":password, "bio":bio})
         })
         .then(res => {
-            if(res.ok) {
-                res.json().then(res => console.log(res))
+            if(res.status === 201) {
+                history.push('/profile')
             }
         })
     }

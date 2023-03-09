@@ -18,7 +18,7 @@ function Header({ currentUser }) {
 
     const login_option = <Menu.Item as={Link} to ="/login" className="basic-button">Login</Menu.Item>
     const profile_option = <Menu.Item as={Link} to ="/profile" className="basic-button">Profile</Menu.Item>
-    const signup_option = <Menu.Item as={Link} to ="/users" className="basic-button">Sign-up</Menu.Item>
+    const signup_option = <Menu.Item as={Link} to ="/signup" className="basic-button">Sign-up</Menu.Item>
 
     return (
         <div>
