@@ -108,7 +108,7 @@ function App() {
             setReplies={setReplies}
           />
         </Route>
-        <Route path="/posts">
+        <Route path="/threads">
           <PostContainer
             posts={filteredPosts}
             currentPost={currentPost}
@@ -137,7 +137,7 @@ function App() {
           <SignUpPage/>
         </Route>
         <Route path='*'>
-          <Redirect to="/posts"/>
+          <Redirect to="/threads"/>
         </Route>
       </Switch>
     </div>
