@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 // import { useNavigate } from "react-router-dom";
+import { Redirect, Route, useHistory } from "react-router-dom";
 
 import { Button, Form, TextArea , Container, Dropdown } from 'semantic-ui-react'
 
@@ -7,6 +8,7 @@ function NewPostForm ({handleNewPost, currentUser, setPosts}) {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [breed, setBreed] = useState('')
+    const history = useHistory();
 
 // this will allow us to navigate back to the posts page or directly to the newly added post
 // const navigate = useNavigate();
@@ -30,11 +32,17 @@ function handleSubmit(e) {
         },
         body: JSON.stringify(newPost),
     })
-    .then(resp => resp.json())
-    .then(() => {
+    // .then(resp => resp.json())
+    .then(res => {
+        if(res.status === 201) {
         fetch("/posts")
         .then((r) => r.json())
         .then((data) => setPosts(data))
+        
+        history.push('/posts')
+    } else {
+            alert("You must be logged in to do that.")
+        }
     });
     // navigate("/posts")
 }

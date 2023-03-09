@@ -52,7 +52,8 @@ const handleEditFormSubmit = (e) => {
         .then(data => {
             onEditUserProfile(formData)
             //setFormData(initialFormValues)
-            setEditFormIsOpen(false)
+            // setEditFormIsOpen(false)
+            window.location.reload()
         })
 
 }

@@ -33,16 +33,19 @@ function NewReplyForm ({replies, handleNewReply, currentUser, currentPost, setRe
             },
             body: JSON.stringify(newReply),
         })
-        .then(resp => resp.json())
         //Rerender CurrentPost And Clear Reply Input Field
-        .then(() => {
+        .then(res => {
+            if(res.status === 201) {
             fetch(`/posts/${id}/replies`)
             .then(r => r.json())
             .then(data => (setReplies(data)))
             .then(() =>setContent(initialContent))
-        })}
+        } else {
+            alert('You must be logged in to do that.')
+        }
+    })}
         catch (error){
-            console.log(error);
+            console.log(error.message);
         }
     }
 

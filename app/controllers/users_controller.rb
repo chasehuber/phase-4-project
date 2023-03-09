@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     skip_before_action :authorized, only: :create
     def index
         users = User.all
@@ -47,4 +49,11 @@ class UsersController < ApplicationController
         params.permit(:user_name, :first_name, :last_name, :full_name, :email, :password, :bio, :password_confirmation)
     end
 
+    # def render_not_found_response(error)
+    #     render json: { errors:  {error.model => "Incorrect username or password"} }, status: :not_found
+    # end
+
+    # def render_unprocessable_entity_response(error)
+    #     render json: { errors: {error.model => "hey there"} }, status: :unprocessable_entity
+    # end
 end
