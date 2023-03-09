@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './App.css'
 import { Link, NavLink, BrowserRouter, Switch, Route } from "react-router-dom";
 import LoginPage from "./components/LoginPage";
 import Header from "./components/Header";
@@ -48,6 +49,12 @@ function App() {
     setCurrentUser(updatedUser)
   }
 
+   //edit user profile
+  const onEditUserProfile = (modifiedUser) => {
+    const updateUser = users.map(user => currentUser.id === user.id ? modifiedUser : user)
+    setCurrentUser(updateUser)
+  }
+
   return (
     <div className="App">
       <Header/>
@@ -75,6 +82,7 @@ function App() {
           <UserProfile
           currentUser={currentUser}
           onDeleteUser={onDeleteUser}
+          onEditUserProfile={onEditUserProfile}
           />
         </Route>
       </Switch>
