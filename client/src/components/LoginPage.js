@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, useHistory } from "react-router-dom";
 
 function LoginPage({ handleUserLogin, currentUser }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
-
+  const history = useHistory();
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -20,6 +20,8 @@ function LoginPage({ handleUserLogin, currentUser }) {
       .then(res => {
         if(res.ok) {
           res.json().then(user => handleUserLogin(user))
+          .then(()=> history.push('/posts'))
+          .then(() => window.location.reload());
         } else {
           // res.json().then(json => setErrors(Object.entries(json.errors)))
           // res.json().then((errorData)=> setErrors(errorData.errors))
