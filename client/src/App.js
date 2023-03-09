@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './App.css'
-import { Link, NavLink, BrowserRouter, Switch, Route } from "react-router-dom";
+import { Link, NavLink, BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import LoginPage from "./components/LoginPage";
 import Header from "./components/Header";
 import PostContainer from "./components/PostContainer";
@@ -135,6 +135,9 @@ function App() {
         </Route>
         <Route path="/signup">
           <SignUpPage/>
+        </Route>
+        <Route path='*'>
+          <Redirect to="/posts"/>
         </Route>
       </Switch>
     </div>
