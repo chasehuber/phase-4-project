@@ -8,10 +8,22 @@ function NewPostForm ({handleNewPost, currentUser, setPosts}) {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [breed, setBreed] = useState('')
+    const [showOptions, setShowOptions] = useState(false);
     const history = useHistory();
 
 // this will allow us to navigate back to the posts page or directly to the newly added post
 // const navigate = useNavigate();
+
+function handleDropdown(e) {
+    e.preventDefault();
+    setShowOptions(!showOptions)
+}
+
+function handleSelect(e) {
+    e.preventDefault()
+    setBreed(e.target.value);
+    setShowOptions(!showOptions);
+}
 
 function handleSubmit(e) {
     e.preventDefault();
@@ -47,42 +59,36 @@ function handleSubmit(e) {
     // navigate("/posts")
 }
     return (
-
         <>
-        <Container>
-        <h1>Add a New Post</h1>
-        <h2>Get the conversation started by adding a new post below</h2>
-        <div class="ui centered grid">
-        <div class="eight wide column">
-            <div class="ui segment">
-                <Form onSubmit= {handleSubmit}>
-                    <Form.Field>
-                        <label>Title</label>
-                        <input required placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
-                    </Form.Field>
-                    <Form.Field
-                    required
-                    id='form-textarea-control-opinion'
-                    control={TextArea}
-                    label='Post Body'
-                    placeholder='Body' value={body} onChange={(e) => setBody(e.target.value)} />
-                    <Form.Field>
-                        <label>Related Breed</label>
-                        <Dropdown
-                            required
-                            placeholder='Select Breed'
-                            selection options={[{ key: 'Goldendoodle', value: 'Goldendoodle', text: 'Goldendoodle' },{ key: 'French Bulldog', value: 'French Bulldog', text: 'French Bulldog' },{ key: 'Havanese', value: 'Havanese', text: 'Havanese' }, { key: 'Mutt', value: 'Mutt', text: 'Mutt' }]}
-                            value={breed}
-                            onChange={(e, data) => setBreed(data.value)}
-                        />
-                    </Form.Field>
-                    <Button type='submit'>Submit</Button>
-                </Form>
+            <h1 className='basic-box'>Add a New Post</h1>
+            <h2 className='basic-box'>Get the conversation started by adding a new post below</h2>
+            <div className='post-container'>
+                <form>
+                    <div className='basic-box'>
+                        <label>Title: </label>
+                        <input type="text" required placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
+                    </div>
+                    <div className='basic-box'>
+                        <label>Body</label>
+                        <div className='basic-box'>
+                            <textarea required rows="10" cols="100" value={body} onChange={(e) => setBody(e.target.value)} />
+                        </div>
+                    </div>
+                    <div className='flex'>
+                        <button onClick={handleDropdown} className='basic-button max-h-9'>Related Breed: {breed} </button>
+                        <div className={showOptions ? "show-dropdown" : "hide-dropdown"}>
+                            <button value="Goldendoodle" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Goldendoodle</button>
+                            <button value="French Bulldog" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>French Bulldog</button>
+                            <button value="Havanese" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Havanese</button>
+                            <button value="Mutt" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Mutt</button>
+                        </div>
+                    </div>
+                    <div className='basic-button inline-block'>
+                        <button onClick={handleSubmit}>Submit</button>
+                    </div>
+                </form>
             </div>
-        </div>
-    </div>
-   </Container>
-   </>
+        </>
     )
 }
 

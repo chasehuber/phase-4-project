@@ -10,3 +10,15 @@
   @apply border-2 border-black border-solid p-1 m-2 max-w-max
 }
 
+.post-container {
+  @apply border-2 border-black border-solid p-2 m-2 max-w-max
+}
+
+.show-dropdown {
+  @apply sticky visible border-2 border-black border-solid p-1 m-2 max-w-max
+}
+
+.hide-dropdown {
+  @apply inline-flex invisible
+}
+
