@@ -19,7 +19,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
 
-  console.log("replyme:", replies)
+  // console.log("replyme:", replies)
   
   useEffect(() => {
     fetch("/auth")
@@ -27,11 +27,10 @@ function App() {
       if(res.ok) {
         res.json().then(user => setCurrentUser(user))
       }
-      console.log(res)
     })
   },[])
 
-  console.log("me", currentUser)
+  // console.log("me", currentUser)
 
   useEffect(()=> {
     fetch("users/")
@@ -45,7 +44,7 @@ function App() {
      fetch("/posts")
      .then((r) => r.json())
      .then((data) => setPosts(data))
-    .then(console.log('fetched!'))
+    // .then(console.log('fetched!'))
   }, [replies]);
 
    // helper function for adding new recipe
