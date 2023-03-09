@@ -1,10 +1,11 @@
 import React from "react";
 import PostCard from "./PostCard";
 import {Link} from 'react-router-dom';
+import SearchPost from './SearchPost'
 
 
 
-function PostContainer({posts, currentPost, setCurrentPost}) {
+function PostContainer({posts, currentPost, setCurrentPost, changeSearch, search}) {
 
 
 
@@ -20,9 +21,15 @@ function PostContainer({posts, currentPost, setCurrentPost}) {
     ))
 
     return (
+        <>
+        <SearchPost
+            search={search}
+            changeSearch={changeSearch}
+        />
         <div>
         {postArray}
         </div>
+        </>
     )
 }
 

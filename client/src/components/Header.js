@@ -24,7 +24,6 @@ function Header({ currentUser }) {
         <div>
         <img className="logo" alt="PupHub" src={toplogo} />
         <Menu ui secondary pointing>
-            <Menu.Item as={Link} to ="/home" className="basic-button">Home</Menu.Item>
             <Menu.Item as={Link} to ="/posts" className="basic-button">Browse Posts</Menu.Item>
             <Menu.Item as={Link} to ="/newpost" className="basic-button">New Post</Menu.Item>
             {currentUser ?  profile_option : login_option}

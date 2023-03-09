@@ -91,3 +91,28 @@
   background-color: #b10303;
 }
 
+.search_container {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 20px;
+  color: rgb(56, 11, 11);
+  border-color: yellow;
+}
+
+.search_container .inputBox{
+    border: none;
+    -webkit-appearance: none;
+    -ms-progress-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: rgb(251, 220, 127);
+    padding: 3px;
+    border-radius: 3px;
+    width: 250px;
+    outline: none;
+}
+
+
