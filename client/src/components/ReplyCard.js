@@ -5,7 +5,7 @@ function ReplyCard({reply}) {
     const [username, setUsername] = useState('')
 
     useEffect(()=> {
-        fetch(`http://localhost:4000/users/${user_id}`)
+        fetch(`/users/${user_id}`)
         .then(r => r.json())
         .then((data) => {
           setUsername(data.user_name);
