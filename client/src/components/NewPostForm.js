@@ -58,9 +58,10 @@ function handleSubmit(e) {
                 <Form onSubmit= {handleSubmit}>
                     <Form.Field>
                         <label>Title</label>
-                        <input placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
+                        <input required placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
                     </Form.Field>
                     <Form.Field
+                    required
                     id='form-textarea-control-opinion'
                     control={TextArea}
                     label='Post Body'
@@ -68,6 +69,7 @@ function handleSubmit(e) {
                     <Form.Field>
                         <label>Related Breed</label>
                         <Dropdown
+                            required
                             placeholder='Select Breed'
                             selection options={[{ key: 'Goldendoodle', value: 'Goldendoodle', text: 'Goldendoodle' },{ key: 'French Bulldog', value: 'French Bulldog', text: 'French Bulldog' },{ key: 'Havanese', value: 'Havanese', text: 'Havanese' }, { key: 'Mutt', value: 'Mutt', text: 'Mutt' }]}
                             value={breed}
