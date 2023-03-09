@@ -17,6 +17,7 @@ function App() {
   const [replies, setReplies] = useState([])
   const [currentUser, setCurrentUser] = useState('');
   const [users, setUsers] = useState([]);
+  const [search, setSearch] = useState("");
 
   console.log("replyme:", replies)
   
@@ -73,6 +74,20 @@ function App() {
     setCurrentUser(updateUser)
   }
 
+   //change value on search bar
+   const changeSearch = (value) => {
+    setSearch(value)
+  }
+
+  //display a list of posts via search: post title
+  const filteredPosts = posts.filter(post => (
+    post.title.toLowerCase().includes(search.toLowerCase())
+    || post.breed.toLowerCase().includes(search.toLowerCase())
+    || post.body.toLowerCase().includes(search.toLowerCase())
+    )
+  )
+  
+
   return (
     <div className="App">
       <Header currentUser={currentUser}/>
@@ -96,9 +111,11 @@ function App() {
         </Route>
         <Route path="/posts">
           <PostContainer
-            posts={posts}
+            posts={filteredPosts}
             currentPost={currentPost}
             setCurrentPost={setCurrentPost}
+            changeSearch={changeSearch}
+            search={search}
         />
         </Route>
         <Route path="/newpost">
