@@ -14,9 +14,10 @@ function Header({ currentUser }) {
             headers: {
               "Content-Type": "application/json"
             }
-        })
-        history.push('/login')
-        window.location.reload()
+        }).then(()=>
+        history.push('/login'))
+        .then(()=>
+        window.location.reload())
     }
 
     const login_option = <Menu.Item as={Link} to ="/login" className="basic-button">Login</Menu.Item>
