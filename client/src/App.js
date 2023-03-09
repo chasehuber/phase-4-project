@@ -48,9 +48,9 @@ function App() {
   }, [replies]);
 
    // helper function for adding new recipe
-  function handleNewPost(newPost) {
-    setPosts([...posts, newPost])
-  }
+  // function handleNewPost(newPost) {
+  //   setPosts([...posts, newPost])
+  // }
 
   function handleUserLogin(user) {
     setCurrentUser(user)
@@ -102,7 +102,11 @@ function App() {
         />
         </Route>
         <Route path="/newpost">
-          <NewPostForm handleNewPost={handleNewPost} currentUser={currentUser}/>
+          <NewPostForm 
+            // handleNewPost={handleNewPost} 
+            currentUser={currentUser}
+            setPosts={setPosts}
+          />
         </Route>
         <Route path="/profile">
           <UserProfile
