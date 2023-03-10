@@ -21,15 +21,15 @@ function PostContainer({posts, currentPost, setCurrentPost, changeSearch, search
     ))
 
     return (
-        <>
+        <div>
             <SearchPost
                 search={search}
                 changeSearch={changeSearch}
             />
-            <div>
+            <div className="min-w-5/6 w-4/6 mx-auto">
                 {postArray}
             </div>
-        </>
+        </div>
     )
 }
 

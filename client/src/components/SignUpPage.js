@@ -30,41 +30,43 @@ function SignUpPage() {
     }
 
     return (
-        <form>
-            <div id="username-field" className="basic-box">
-                <label>Username: </label>
-                <input type="text" name="username" className="basic-box" value={username}
-                onChange={ (e) => setUsername(e.target.value)}/>
-            </div>
-            <div id="password-field" className="basic-box">
-                <label>Password: </label>
-                <input type="password" name="password" className="basic-box" value={password}
-                onChange={ (e) => setPassword(e.target.value)}/>
-            </div>
-            <div id="first-name-field" className="basic-box">
-                <label>First Name: </label>
-                <input type="text" name="first-name" className="basic-box" value={first_name}
-                onChange={ (e) => setFirstName(e.target.value)}/>
-            </div>
-            <div id="last-name-field" className="basic-box">
-                <label>Last Name: </label>
-                <input type="text" name="last-name" className="basic-box" value={last_name}
-                onChange={ (e) => setLastName(e.target.value)}/>
-            </div>
-            <div id="email-field" className="basic-box">
-                <label>Email: </label>
-                <input type="text" name="email" className="basic-box" value={email}
-                onChange={ (e) => setEmail(e.target.value)}/>
-            </div>
-            <div id="bio-field" className="basic-box">
-                <label>Bio: </label>
-                <input type="text" name="bio" className="basic-box" value={bio}
-                onChange={ (e) => setBio(e.target.value)}/>
-            </div>
-            <div id="submit">
-                <input type="submit" className="basic-button" onClick={handleSignUp}/>
-            </div>
-        </form>
+        <div className="max-w-max mx-auto">
+            <form className="basic-box">
+                <div id="username-field" className="basic-box">
+                    <label>Username: </label>
+                    <input type="text" name="username" className="basic-box" value={username}
+                    onChange={ (e) => setUsername(e.target.value)}/>
+                </div>
+                <div id="password-field" className="basic-box">
+                    <label>Password: </label>
+                    <input type="password" name="password" className="basic-box" value={password}
+                    onChange={ (e) => setPassword(e.target.value)}/>
+                </div>
+                <div id="first-name-field" className="basic-box">
+                    <label>First Name: </label>
+                    <input type="text" name="first-name" className="basic-box" value={first_name}
+                    onChange={ (e) => setFirstName(e.target.value)}/>
+                </div>
+                <div id="last-name-field" className="basic-box">
+                    <label>Last Name: </label>
+                    <input type="text" name="last-name" className="basic-box" value={last_name}
+                    onChange={ (e) => setLastName(e.target.value)}/>
+                </div>
+                <div id="email-field" className="basic-box">
+                    <label>Email: </label>
+                    <input type="text" name="email" className="basic-box" value={email}
+                    onChange={ (e) => setEmail(e.target.value)}/>
+                </div>
+                <div id="bio-field" className="basic-box">
+                    <label>Bio: </label>
+                    <input type="text" name="bio" className="basic-box" value={bio}
+                    onChange={ (e) => setBio(e.target.value)}/>
+                </div>
+                <div id="submit" className="max-w-max mx-auto">
+                    <input type="submit" className="basic-button" onClick={handleSignUp}/>
+                </div>
+            </form>
+        </div>
     )
 }
 

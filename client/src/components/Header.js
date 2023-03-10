@@ -27,17 +27,18 @@ function Header({ currentUser }) {
     const newpost_option = <Menu.Item as={Link} to ="/newpost" className="basic-button">New Post</Menu.Item>
 
     return (
-        <div>
-        <img className="logo" alt="PupHub" src={toplogo} />
-        <Menu ui secondary pointing>
-            <Menu.Item as={Link} to ="/posts" className="basic-button">Browse Posts</Menu.Item>
-            {currentUser ? newpost_option : null}
-            {currentUser ?  profile_option : login_option}
-            {currentUser ? null : signup_option}
-            {currentUser ? logout_option : null}
-            
-        </Menu>
-
+        <div className="max-w-max mx-auto">
+            <img className="mx-auto border-black border-2 border-solid m-4" alt="PupHub" src={toplogo} />
+            <div className="border-2 border-solid border-black p-3">
+                <Menu ui secondary pointing>
+                    <Menu.Item as={Link} to ="/posts" className="basic-button">Browse Posts</Menu.Item>
+                    {currentUser ? newpost_option : null}
+                    {currentUser ?  profile_option : login_option}
+                    {currentUser ? null : signup_option}
+                    {currentUser ? logout_option : null}
+                    
+                </Menu>
+            </div>
         </div>
     )
 }

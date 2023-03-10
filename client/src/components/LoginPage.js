@@ -31,21 +31,23 @@ function LoginPage({ handleUserLogin, currentUser }) {
 
   return (
     <>
-    <form>
-        <div id="username-field" className="basic-box">
+    <div className="mx-auto max-w-max">
+      <form>
+        <div id="username-field" className="basic-box max-w-max">
           <label>Username: </label>
-          <input type="text" name="username" className="basic-box" value={username}
+          <input type="text" name="username" className="basic-box max-w-max" value={username}
             onChange={ (e) => setUsername(e.target.value) }/>
         </div>
         <div id="password-field" className="basic-box">
           <label>Password: </label>
-          <input type="password" name="password" className="basic-box" value={password}
+          <input type="password" name="password" className="basic-box max-w-max" value={password}
             onChange={ (e) => setPassword(e.target.value) }/>
         </div>
-        <div>
+        <div className="mx-auto max-w-max">
           <input type="submit" className="basic-button" onClick={handleSubmit}/>
         </div>
       </form>
+    </div>
       {/* {errors?<h2>{errors}</h2>:null} */}
     </>
   )

@@ -62,22 +62,23 @@ function handleSubmit(e) {
     if (!currentUser) {history.push("/posts")}
     return (
         <>
-            <h1 className='basic-box'>Add a New Post</h1>
-            <h2 className='basic-box'>Get the conversation started by adding a new post below</h2>
+        <div className='max-w-max mx-auto'>
+            <h1 className='basic-box max-w-max'>Add a New Post</h1>
+            <h2 className='basic-box max-w-max'>Get the conversation started by adding a new post below</h2>
             <div className='post-container'>
                 <form>
-                    <div className='basic-box'>
+                    <div className='basic-box max-w-max'>
                         <label>Title: </label>
                         <input type="text" required placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
                     </div>
-                    <div className='basic-box'>
+                    <div className='basic-box max-w-max'>
                         <label>Body: </label>
-                        <div className='basic-box'>
-                            <textarea required rows="10" cols="100" value={body} onChange={(e) => setBody(e.target.value)} />
+                        <div className='basic-box max-w-max'>
+                            <textarea required rows="10" cols="100" className="resize-none" value={body} onChange={(e) => setBody(e.target.value)} />
                         </div>
                     </div>
                     <div className='flex'>
-                        <button onClick={handleDropdown} className='basic-button max-h-9'>Related Breed: {breed} </button>
+                        <button onClick={handleDropdown} className='basic-button max-h-9 max-w-max'>Related Breed: {breed} </button>
                         <div className={showOptions ? "show-dropdown" : "hide-dropdown"}>
                             <button value="Goldendoodle" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Goldendoodle</button>
                             <button value="French Bulldog" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>French Bulldog</button>
@@ -85,11 +86,12 @@ function handleSubmit(e) {
                             <button value="Mutt" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Mutt</button>
                         </div>
                     </div>
-                    <div className='basic-button inline-block'>
+                    <div className='basic-button max-w-max inline-block'>
                         <button onClick={handleSubmit}>Submit</button>
                     </div>
                 </form>
             </div>
+        </div>
         </>
     )
 }
