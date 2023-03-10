@@ -92,7 +92,7 @@ function App() {
       setPosts(updatedPost)
     }
   return (
-    <div className="App">
+    <div className="p-3">
       <Header currentUser={currentUser}/>
       <Switch>
         <Route path="/login">

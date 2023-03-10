@@ -4,16 +4,19 @@ function SearchPost({search, changeSearch}) {
         changeSearch(e.target.value)
     }
     return (
-        <div className="search_container">
-            <span>🔍</span>
-            <input
-                value={search} 
-                className="inputBox" 
-                type="text" 
-                id="search" 
-                placeholder='Question about your dog?' 
-                onChange={handleChange} 
-            />  
+        <div className="w-2/6 mx-auto">
+            <div className="basic-box w-full">
+                <div className="mx-auto w-5/6">
+                    <input
+                        value={search} 
+                        className="basic-box w-full" 
+                        type="text" 
+                        id="search" 
+                        placeholder='Question about your dog?' 
+                        onChange={handleChange} 
+                    />  
+                </div>
+            </div>
         </div>
     )
 }

@@ -62,35 +62,37 @@ function handleSubmit(e) {
     if (!currentUser) {history.push("/posts")}
     return (
         <>
-        <div className='max-w-max mx-auto'>
+        <div className='w-4/6 mx-auto'>
             <h1 className='basic-box max-w-max'>Add a New Post</h1>
             <h2 className='basic-box max-w-max'>Get the conversation started by adding a new post below</h2>
-            <div className='post-container'>
+            <div className='post-container w-full'>
                 <form>
-                    <div className='basic-box max-w-max'>
+                    <div className='basic-box'>
                         <label>Title: </label>
                         <input type="text" required placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
                     </div>
-                    <div className='basic-box max-w-max'>
+                    <div className='basic-box'>
                         <label>Body: </label>
-                        <div className='basic-box max-w-max'>
-                            <textarea required rows="10" cols="100" className="resize-none" value={body} onChange={(e) => setBody(e.target.value)} />
+                        <div className='basic-box'>
+                            <textarea required className="resize-none w-full" rows="10" value={body} onChange={(e) => setBody(e.target.value)} />
                         </div>
                     </div>
-                    <div className='flex'>
-                        <button onClick={handleDropdown} className='basic-button max-h-9 max-w-max'>Category: {breed} </button>
-                        <div className={showOptions ? "show-dropdown" : "hide-dropdown"}>
-                            <button value="Dog Breeds" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Dog Breeds</button>
-                            <button value="Tips and Tricks" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Tips and Tricks</button>
-                            <button value="Training and Behavior" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Training and Behavior</button>
-                            <button value="Health and Wellness" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Health and Wellness</button>
-                            <button value="Adoption and Rescue" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Adoption and Rescue</button>
-                            <button value="Grooming and Hygiene" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Grooming and Hygiene</button>
-                            <button value="Adoption and Rescue" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Adoption and Rescue</button>
-                            <button value="Dog-friendly Places and Events" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Dog-friendly Places and Events</button>
+                    <div>
+                        <div className='flex'>
+                            <button onClick={handleDropdown} className='basic-button max-h-9 min-w-fit'>Category: {breed} </button>
+                            <div className={showOptions ? "show-dropdown" : "hide-dropdown"}>
+                                <button value="Dog Breeds" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Dog Breeds</button>
+                                <button value="Tips and Tricks" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Tips and Tricks</button>
+                                <button value="Training and Behavior" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Training and Behavior</button>
+                                <button value="Health and Wellness" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Health and Wellness</button>
+                                <button value="Adoption and Rescue" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Adoption and Rescue</button>
+                                <button value="Grooming and Hygiene" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Grooming and Hygiene</button>
+                                <button value="Adoption and Rescue" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Adoption and Rescue</button>
+                                <button value="Dog-friendly Places and Events" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Dog-friendly Places and Events</button>
+                            </div>
                         </div>
                     </div>
-                    <div className='basic-button max-w-max inline-block'>
+                    <div className='basic-button max-w-max inline-block text-white bg-green-500 hover:bg-green-300'>
                         <button onClick={handleSubmit}>Submit</button>
                     </div>
                 </form>
