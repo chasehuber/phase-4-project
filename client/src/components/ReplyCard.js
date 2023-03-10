@@ -8,7 +8,7 @@ function ReplyCard({reply}) {
         fetch(`/users/${user_id}`)
         .then(r => r.json())
         .then((data) => {
-          setUsername(data.user_name);
+        setUsername(data.user_name);
         })
     }, [])
 

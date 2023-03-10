@@ -7,7 +7,7 @@ function UserProfile({currentUser, onDeleteUser, onEditUserProfile}) {
     const [profilePhoto, setProfilePhoto] = useState(profileIcon)
     const history = useHistory();
 
-    console.log(currentUser)
+
     const initialFormValues = {
         first_name: currentUser.first_name,
         last_name:currentUser.last_name,
@@ -25,7 +25,6 @@ function UserProfile({currentUser, onDeleteUser, onEditUserProfile}) {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
-    console.log(formData)
     // const updateUserDetails = (e) => {
     //     e.preventDefault()
     //     setUserDetails({
@@ -37,7 +36,7 @@ function UserProfile({currentUser, onDeleteUser, onEditUserProfile}) {
     //     setEditFormIsOpen(false)
     // }
 
-    const handleEditFormSubmit = (e) => {
+    async function handleEditFormSubmit(e) {
         e.preventDefault()
         setEditFormIsOpen(false)
 
@@ -49,14 +48,16 @@ function UserProfile({currentUser, onDeleteUser, onEditUserProfile}) {
             body: JSON.stringify(formData)
         }
 
-        fetch(`users/${currentUser.id}`, requestObj)
+    await fetch(`users/${currentUser.id}`, requestObj)
             .then(response => response.json())
             .then(() => {
                 onEditUserProfile(formData)
                 //setFormData(initialFormValues)
-                // setEditFormIsOpen(false)
-                window.location.reload()
+                // setEditFormIsOpen(false) 
+                history.push("/profile")
+                window.location.reload();
             })
+
 
     }
     const editForm = (
@@ -65,7 +66,7 @@ function UserProfile({currentUser, onDeleteUser, onEditUserProfile}) {
             <br />
             <input type="text" placeholder="last name" name="last_name" value={last_name} onChange={handleFormData}/>
             <br />
-            <input type='password' placeholder="password" name="password" value={password} onChange={handleFormData}/>
+            <input required type='password' placeholder="password" name="password" value={password} onChange={handleFormData}/>
             <br />
             <input type="text" placeholder="Tell us about you" name="bio" value={bio} onChange={handleFormData}/>
             <br />
@@ -93,7 +94,7 @@ function UserProfile({currentUser, onDeleteUser, onEditUserProfile}) {
             method: "DELETE",
             mode:"cors",
             headers: {
-              "Content-Type": "application/json"
+            "Content-Type": "application/json"
             }
         })
 
