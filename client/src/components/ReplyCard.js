@@ -14,8 +14,10 @@ function ReplyCard({reply}) {
 
     return (
         <>
-        <p>{username}</p>
-        <p>{content}</p>
+        <div className="basic-box">
+            <p className="basic-box max-w-max">{username}</p>
+            <p className="basic-box">{content}</p>
+        </div>
         </>
     )
 }

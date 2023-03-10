@@ -62,19 +62,19 @@ function handleSubmit(e) {
     if (!currentUser) {history.push("/posts")}
     return (
         <>
-        <div className='max-w-max mx-auto'>
+        <div className='w-4/6 max-w-max mx-auto'>
             <h1 className='basic-box max-w-max'>Add a New Post</h1>
             <h2 className='basic-box max-w-max'>Get the conversation started by adding a new post below</h2>
             <div className='post-container'>
                 <form>
-                    <div className='basic-box max-w-max'>
+                    <div className='basic-box'>
                         <label>Title: </label>
                         <input type="text" required placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)} />
                     </div>
-                    <div className='basic-box max-w-max'>
+                    <div className='basic-box'>
                         <label>Body: </label>
-                        <div className='basic-box max-w-max'>
-                            <textarea required rows="10" cols="100" className="resize-none" value={body} onChange={(e) => setBody(e.target.value)} />
+                        <div className='basic-box'>
+                            <textarea required className="resize-none w-full" rows="10" value={body} onChange={(e) => setBody(e.target.value)} />
                         </div>
                     </div>
                     <div className='flex'>
@@ -90,7 +90,7 @@ function handleSubmit(e) {
                             <button value="Dog-friendly Places and Events" className="block hover:bg-gray-300" onClick={(e) => handleSelect(e)}>Dog-friendly Places and Events</button>
                         </div>
                     </div>
-                    <div className='basic-button max-w-max inline-block'>
+                    <div className='basic-button max-w-max inline-block text-white bg-green-500 hover:bg-green-300'>
                         <button onClick={handleSubmit}>Submit</button>
                     </div>
                 </form>

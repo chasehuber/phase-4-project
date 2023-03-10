@@ -16,10 +16,10 @@ function PostCard({post, setCurrentPost}) {
     return (
 
         <div onClick={handleClick} className="basic-button w-full">
-            <p>Title: {title}</p>
-            <p>Category: {breed}</p>
-            <p>{body}</p>
-            <p>Replies: {reply_count_total}</p>
+            <p className="basic-box">Title: {title}</p>
+            <p className="basic-box">Category: {breed}</p>
+            <p className="basic-box">{body}</p>
+            <p className="basic-box max-w-max">Replies: {reply_count_total}</p>
         </div>
     )
 }

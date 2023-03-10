@@ -51,23 +51,21 @@ function NewReplyForm ({replies, handleNewReply, currentUser, currentPost, setRe
 
     return (
         <>
-        <Container>
-        <h1>Add a Reply</h1>
-        <div class="ui centered grid">
-        <div class="eight wide column">
-            <div class="ui segment">
-                <Form onSubmit= {handleSubmit}>
-                    <Form.Field
-                    id='form-textarea-control-opinion'
-                    control={TextArea}
+        <h1 className='basic-box max-w-max'>Add a Reply</h1>
+        <div className='basic-box'>
+            <form onSubmit= {handleSubmit}>
+                <div className='basic-box'>
+                    <textarea
+                    className='w-full'
+                    rows="4"
                     label='Your Reply'
                     placeholder='Type your reply here...' value={content} onChange={(e) => setContent(e.target.value)} />
-                    <Button type='submit'>Post Reply</Button>
-                </Form>
-            </div>
+                </div>
+                <div className='basic-button max-w-max text-white bg-green-500 hover:bg-green-300'>
+                    <button type='submit'>Post Reply</button>
+                </div>
+            </form>
         </div>
-    </div>
-   </Container>
    </>
     )
 }

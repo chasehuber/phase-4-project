@@ -28,16 +28,18 @@ function Header({ currentUser }) {
 
     return (
         <div className="max-w-max mx-auto">
-            <img className="mx-auto border-black border-2 border-solid m-4" alt="PupHub" src={toplogo} />
-            <div className="border-2 border-solid border-black p-3">
-                <Menu ui secondary pointing>
-                    <Menu.Item as={Link} to ="/posts" className="basic-button">Browse Posts</Menu.Item>
-                    {currentUser ? newpost_option : null}
-                    {currentUser ?  profile_option : login_option}
-                    {currentUser ? null : signup_option}
-                    {currentUser ? logout_option : null}
-                    
-                </Menu>
+            <div className="basic-box">
+                <img className="mx-auto border-black border-2 border-solid m-4" alt="PupHub" src={toplogo} />
+                <div className="border-2 border-solid border-black p-3 max-w-max mx-auto">
+                    <Menu ui secondary pointing>
+                        <Menu.Item as={Link} to ="/posts" className="basic-button">Browse Posts</Menu.Item>
+                        {currentUser ? newpost_option : null}
+                        {currentUser ?  profile_option : login_option}
+                        {currentUser ? null : signup_option}
+                        {currentUser ? logout_option : null}
+                        
+                    </Menu>
+                </div>
             </div>
         </div>
     )
