@@ -15,7 +15,7 @@ function PostCard({post, setCurrentPost}) {
 
     return (
 
-        <div onClick={handleClick} className="basic-button">
+        <div onClick={handleClick} className="basic-button w-full">
             <p>Title: {title}</p>
             <p>Category: {breed}</p>
             <p>{body}</p>

@@ -110,22 +110,24 @@ function UserProfile({currentUser, onDeleteUser, onEditUserProfile}) {
     }
         if(!currentUser) {history.push("/posts")}
         return (
-            <section className="profile">
-                <input type="file" accept='image/*' name="photo" id="profilePhotoInput" />
-                <label htmlFor="profilePhotoInput">
-                    <div className="profile-photo" role="button" title="Click to edit photo">
-                        <img src={profileIcon} alt="profile" />
-                    </div>
-                </label>
+            <div className="max-w-max mx-auto">
+                <div className='basic-box'>
+                    <input type="file" accept='image/*' name="photo" id="profilePhotoInput" />
+                    <label htmlFor="profilePhotoInput" className='max-w-max mx-auto'>
+                        <div className="profile-photo" role="button" title="Click to edit photo">
+                            <img src={profileIcon} alt="profile" />
+                        </div>
+                    </label>
 
-                <div className="profile-info">
-                    <p className="name">{currentUser.full_name}</p>
-                    <p className="username">@{currentUser.user_name}</p>
-                    <p className="bio">{currentUser.bio} </p>
-                    {editFormIsOpen ? editForm : editButton}
-                    <button className="cancel-button" onClick={deleteAccount}> Deactivate </button>
+                    <div className="profile-info">
+                        <p className="name">{currentUser.full_name}</p>
+                        <p className="username">@{currentUser.user_name}</p>
+                        <p className="bio">{currentUser.bio} </p>
+                        {editFormIsOpen ? editForm : editButton}
+                        <button className="cancel-button" onClick={deleteAccount}> Deactivate </button>
+                    </div>
                 </div>
-            </section>
+            </div>
         )
 }
 
