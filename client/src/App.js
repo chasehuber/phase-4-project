@@ -41,9 +41,9 @@ function App() {
   }, [])
 
   useEffect(() => {
-     fetch("/posts")
-     .then((r) => r.json())
-     .then((data) => setPosts(data))
+    fetch("/posts")
+    .then((r) => r.json())
+    .then((data) => setPosts(data))
     // .then(console.log('fetched!'))
   }, [replies]);
 
@@ -86,7 +86,11 @@ function App() {
     )
   )
   
-
+//Delete a currentPost that the CurrentUser posted
+    const onDeletePost = (currentUserId) => {
+      const updatedPost = posts.filter((post) => post.id !== currentUserId)
+      setPosts(updatedPost)
+    }
   return (
     <div className="App">
       <Header currentUser={currentUser}/>
@@ -106,6 +110,7 @@ function App() {
             currentPost={currentPost}
             setCurrentPost={setCurrentPost}
             setReplies={setReplies}
+            onDeletePost={onDeletePost}
           />
         </Route>
         <Route path="/threads">
